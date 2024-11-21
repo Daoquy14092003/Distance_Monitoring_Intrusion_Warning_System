@@ -3,10 +3,8 @@
 
 const char* ssid = "Gau In T3";
 const char* password = "unin2611";
-const char* mqttServer = "YOUR_MQTT_BROKER";
+const char* mqttServer = "broker.emqx.io";
 const int mqttPort = 1883;
-const char* mqttUser = "YOUR_MQTT_USER";
-const char* mqttPassword = "YOUR_MQTT_PASSWORD";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -38,11 +36,13 @@ void setup() {
 
   client.setServer(mqttServer, mqttPort);
   while (!client.connected()) {
-    if (client.connect("ESP32Client", mqttUser, mqttPassword)) {
+    Serial.print("Attempting MQTT connection...");
+    if (client.connect("ESP32Client")) { // No username/password needed
       Serial.println("Connected to MQTT Broker!");
     } else {
-      Serial.print("Failed with state ");
+      Serial.print("Failed, rc=");
       Serial.print(client.state());
+      Serial.println(" try again in 2 seconds");
       delay(2000);
     }
   }
@@ -63,7 +63,7 @@ void loop() {
   if (motionDetected && distance < 50) {
     digitalWrite(BUZZER_PIN, HIGH);
     digitalWrite(LED_PIN, HIGH);
-    client.publish("home/security/alert", "Intruder detected!");
+    client.publish("Security/warning", "Intruder detected!");
   } else {
     digitalWrite(BUZZER_PIN, LOW);
     digitalWrite(LED_PIN, LOW);
@@ -72,12 +72,12 @@ void loop() {
   // Send distance and motion status to MQTT
   char distanceStr[8];
   snprintf(distanceStr, sizeof(distanceStr), "%d", distance);
-  client.publish("home/security/distance", distanceStr);
+  client.publish("Security/distance", distanceStr);
   
   if (motionDetected) {
-    client.publish("home/security/motion", "Motion detected");
+    client.publish("Security/motion", "Motion detected");
   } else {
-    client.publish("home/security/motion", "No motion");
+    client.publish("Security/motion", "No motion");
   }
 
   delay(1000); // Adjust delay as necessary
