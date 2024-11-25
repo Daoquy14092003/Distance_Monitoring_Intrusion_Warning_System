@@ -10,8 +10,8 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 
 // Định nghĩa các chân kết nối
-#define TRIG_PIN 12
-#define ECHO_PIN 13
+#define TRIG_PIN 26 
+#define ECHO_PIN 27
 #define PIR_PIN 21
 #define BUZZER_PIN 16
 #define LED_PIN 15
