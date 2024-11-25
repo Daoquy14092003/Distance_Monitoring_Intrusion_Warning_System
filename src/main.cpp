@@ -12,7 +12,7 @@ PubSubClient client(espClient);
 #define TRIG_PIN 12
 #define ECHO_PIN 13
 #define PIR_PIN 27
-#define BUZZER_PIN 16
+#define BUZZER_PIN 17
 #define LED_PIN 15
 
 long duration;
