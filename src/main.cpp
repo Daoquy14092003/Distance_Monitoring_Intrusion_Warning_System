@@ -102,5 +102,5 @@ void loop() {
     client.publish("Security/motion", "No motion");
   }
 
-  delay(1000);  // Điều chỉnh độ trễ phù hợp
+  delay(1000);  
 }
