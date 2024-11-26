@@ -13,7 +13,11 @@ PubSubClient client(espClient);
 #define TRIG_PIN 26 
 #define ECHO_PIN 27
 #define PIR_PIN 21
+<<<<<<< HEAD
 #define BUZZER_PIN 17
+=======
+#define BUZZER_PIN 16
+>>>>>>> 491b7ffc44b81a7501e3095b61cc68b6db981e1f
 #define LED_PIN 15
 
 long duration;
@@ -103,4 +107,8 @@ void loop() {
   }
 
   delay(1000);  
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 491b7ffc44b81a7501e3095b61cc68b6db981e1f
