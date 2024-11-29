@@ -1,10 +1,10 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "Gau In T3";
-const char* password = "unin2611";
-const char* mqttServer = "broker.emqx.io";
-const int mqttPort = 1883;
+const char* ssid = "Gau In T3";  // Thay thế với SSID của bạn
+const char* password = "unin2611";  // Thay thế với mật khẩu WiFi của bạn
+const char* mqttServer = "broker.emqx.io";  // Địa chỉ broker MQTT
+const int mqttPort = 1883;  // Cổng broker MQTT
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -58,19 +58,49 @@ void callback(char* topic, byte* payload, unsigned int length) {
     command += (char)payload[i];
   }
 
-  Serial.print("Command received: ");
+  Serial.print("Command received [");
+  Serial.print(topic);
+  Serial.print("]: ");
   Serial.println(command);
 
-  if (command == "OFF") {
-    systemOn = false;  // Tắt hệ thống
-    Serial.println("System OFF");
-    digitalWrite(LED_PIN, LOW);  // Tắt LED
-    digitalWrite(BUZZER_PIN, LOW);  // Tắt buzzer
-  } else if (command == "ON") {
-    systemOn = true;  // Bật hệ thống
-    Serial.println("System ON");
+  // Xử lý lệnh bật/tắt hệ thống
+  if (String(topic) == "Security/control") {
+    if (command == "ON") {
+      systemOn = true;
+      Serial.println("System ON");
+      client.publish("Security/state", "ON");
+    } else if (command == "OFF") {
+      systemOn = false;
+      Serial.println("System OFF");
+      client.publish("Security/state", "OFF");
+      digitalWrite(BUZZER_PIN, LOW);
+      digitalWrite(LED_PIN, LOW);
+    }
+  }
+
+  // Xử lý lệnh tắt cảnh báo
+  if (String(topic) == "Security/button") {
+    if (command == "ALERT_OFF") {
+      intruderDetected = false;
+      digitalWrite(BUZZER_PIN, LOW);
+      digitalWrite(LED_PIN, LOW);
+      Serial.println("ALERT_OFFF");
+    }
   }
 }
+
+// Đo khoảng cách từ cảm biến HC-SR04
+long measureDistance() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  duration = pulseIn(ECHO_PIN, HIGH);
+  return duration * 0.034 / 2;  // Tính khoảng cách (cm)
+}
+
 
 // Thiết lập kết nối ban đầu
 void setup() {
@@ -87,17 +117,6 @@ void setup() {
   reconnectMQTT();
 }
 
-// Đo khoảng cách từ cảm biến HC-SR04
-long measureDistance() {
-  digitalWrite(TRIG_PIN, LOW);
-  delayMicroseconds(2);
-  digitalWrite(TRIG_PIN, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(TRIG_PIN, LOW);
-
-  duration = pulseIn(ECHO_PIN, HIGH);
-  return duration * 0.034 / 2;  // Tính khoảng cách (cm)
-}
 
 // Hàm xử lý trong vòng lặp chính
 void loop() {
