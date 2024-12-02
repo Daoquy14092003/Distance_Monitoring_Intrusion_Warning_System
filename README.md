@@ -35,4 +35,6 @@ Hệ thống này phù hợp cho việc giám sát an ninh tại cửa ra vào, 
 ## Sơ đồ thuật toán
 ![SƠ ĐỒ THUẬT TOÁN](DistanceMonitoring_IntrusionWarning.drawio.png)
 
+## Kết quả dự án giữa kì 
+
 
