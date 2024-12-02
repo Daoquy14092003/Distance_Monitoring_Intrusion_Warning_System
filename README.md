@@ -32,6 +32,6 @@ Dự án này là một "Hệ Thống Giám Sát Khoảng Cách và Cảnh Báo 
 ## Ứng Dụng
 Hệ thống này phù hợp cho việc giám sát an ninh tại cửa ra vào, hành lang, hoặc bất kỳ khu vực nào cần theo dõi chuyển động và khoảng cách. Ứng dụng có thể sử dụng trong các khu vực dân cư, thương mại, hoặc công nghiệp để cảnh báo người dùng về các xâm nhập không được phép.
 
-![Circuit Diagram](DistanceMonitoring_IntrusionWarning.drawio.png)
+![SƠ ĐỒ THUẬT TOÁN](DistanceMonitoring_IntrusionWarning.drawio.png)
 
 
