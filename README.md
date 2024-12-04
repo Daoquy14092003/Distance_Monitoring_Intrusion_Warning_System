@@ -42,9 +42,15 @@
 ![SƠ ĐỒ THUẬT TOÁN](images/My_Flowchart.png)
 
 ## Mô phỏng hệ thống 
+![Mô Phỏng](images/My_System_2.jpg)
 
 ## Kết quả  
+![Kết Quả](images/My_System_1.jpg)
+![Dashboard](images/My_NodeRed_Dashboard.png)
 
 ## Hướng phát triển
+
+
+
 
 
