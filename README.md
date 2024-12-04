@@ -49,7 +49,15 @@
 ![Dashboard](images/My_NodeRed_Dashboard.png)
 
 ## Hướng phát triển
+  - Tích hợp trên điện thoại để giám sát và điều khiển trực quan hơn
+  - Tăng tính chính xác bằng việc cải thiện thuật toán và thêm vào các cảm biến ( Radar, hình ảnh, ... )
+  - Thiết kế vỏ bọc mô hình hợp lí để bảo vệ hệ thống
+  - Tối ưu hóa năng lượng với nguồn cấp
+  - Tăng tính năng bảo mật cho hệ thống
+  - Có thể nghĩ đến kết hợp AI,ML để phân tích dữ liệu từ cảm biến và phân tích đối tượng phát hiện
 
+## Kết luận 
+Hệ thống "Distance Monitoring and Intrusion Warning System" là một giải pháp giám sát hiệu quả, kết hợp cảm biến và công nghệ IoT để phát hiện xâm nhập và giám sát từ xa. Với khả năng gửi cảnh báo qua MQTT và tích hợp với Node-RED Dashboard, hệ thống mang lại tính tiện lợi, bảo mật và khả năng tùy chỉnh cao. Đây là một giải pháp phù hợp để tăng cường an ninh cho các lối đi, hành lang, hoặc không gian cần bảo vệ, đồng thời có tiềm năng mở rộng ứng dụng trong các lĩnh vực như nhà thông minh, kho bãi và giao thông
 
 
 
