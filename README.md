@@ -72,6 +72,13 @@
 ## Kết quả  
 ![Kết Quả](images/My_System_1.jpg)
 ![Dashboard](images/My_NodeRed_Dashboard.png)
+  - Sau khi phát hiện có xâm nhập, led đã sáng và buzzer đã kêu đúng như dự đoán
+  - Kết quả hiển thị trên NodeRed Dashboard :
+    - Gauge đã hiển thị dữ liệu về khoảng cách của sự xâm nhập đối với hệ thống
+    - Cảnh báo phát hiện xâm nhập "Intruder detected!" hiển thị ở góc phải Dashboard
+    - Trạng thái chuyển động được nhận biết với text "Motion Detected"
+    - Có thể sử dụng button "Tắt cảnh báo" để tắt ngay led và buzzer nếu cần thiết
+    - Khi không có xâm nhập, led và buzzer của hệ thống không hoạt động và trạng thái chuyển động hiển thị "No motion" 
 
 ## Hướng phát triển
   - Tích hợp trên điện thoại để giám sát và điều khiển trực quan hơn
