@@ -41,6 +41,31 @@
 ## Sơ đồ thuật toán
 ![SƠ ĐỒ THUẬT TOÁN](images/My_Flowchart.png)
 
+## Cấu hình NodeRed
+![CẤU HÌNH NODERED](images/My_NodeRed.png)
+
+## Cấu trúc và chức năng của các node trong NodeRed
+- **Nhận và hiển thị dữ liệu về khoảng cách**:
+  - **Node MQTT in**:
+    - **Topic** : Security/distance
+    - **Qos** : 0
+  - **Node Gauge (khoảng cách)**: hiển thị khoảng cách của vật thể so với giới hạn 
+- **Nhận và hiển thị dữ liệu cho việc phát hiện chuyển động**:
+  - **Node MQTT in**:
+    - **Topic** : Security/motion
+    - **Qos** : 0
+  - **Node Text (trạng thái chuyển động)**: hiển thị trạng thái chuyển động bằng text
+- **Nhận dữ liệu và hiển thị cảnh báo**:
+  - **Node MQTT in**:
+    - **Topic** : Security/warning
+    - **Qos** : 0
+  - **Node Notification (cảnh báo)**: hiển thị cảnh báo phát hiện xâm nhập trên dashboard
+- **Thực hiện tắt cảnh báo (led+buzzer) bằng nút bấm nếu cần thiết**:
+  - **Node Button**: tắt cảnh báo bao gồm led và buzzer nếu cần thiết bằng một nút nhấn 
+  - **Node MQTT out**:
+    - **Topic** : Security/reset
+    - **Qos** : 0
+    
 ## Mô phỏng hệ thống 
 ![Mô Phỏng](images/My_System_2.jpg)
 
